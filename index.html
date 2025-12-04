@@ -1,855 +1,355 @@
 <!DOCTYPE html>
-<html lang="en" data-color-scheme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday</title>
-  <style>
-    /* PERPLEXITY DESIGN SYSTEM (TRIMMED TO ESSENTIALS) */
-    :root {
-      --color-white: rgba(255, 255, 255, 1);
-      --color-cream-50: rgba(252, 252, 249, 1);
-      --color-cream-100: rgba(255, 255, 253, 1);
-      --color-gray-200: rgba(245, 245, 245, 1);
-      --color-gray-300: rgba(167, 169, 169, 1);
-      --color-slate-500: rgba(98, 108, 113, 1);
-      --color-slate-900: rgba(19, 52, 59, 1);
-      --color-brown-600-rgb: 94, 82, 64;
-      --color-teal-500: rgba(33, 128, 141, 1);
-      --color-teal-600: rgba(29, 116, 128, 1);
-      --color-teal-700: rgba(26, 104, 115, 1);
-      --color-red-500: rgba(192, 21, 47, 1);
-      --color-orange-500: rgba(168, 75, 47, 1);
-
-      --color-background: var(--color-cream-50);
-      --color-surface: var(--color-cream-100);
-      --color-text: var(--color-slate-900);
-      --color-text-secondary: var(--color-slate-500);
-      --color-primary: var(--color-teal-500);
-      --color-primary-hover: var(--color-teal-600);
-      --color-primary-active: var(--color-teal-700);
-      --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-      --color-btn-primary-text: var(--color-cream-50);
-      --color-error: var(--color-red-500);
-
-      --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --font-size-base: 14px;
-      --font-size-lg: 16px;
-      --font-size-2xl: 20px;
-      --font-size-3xl: 24px;
-      --font-size-4xl: 30px;
-      --font-weight-medium: 500;
-      --font-weight-semibold: 550;
-      --line-height-tight: 1.2;
-
-      --space-4: 4px;
-      --space-8: 8px;
-      --space-12: 12px;
-      --space-16: 16px;
-      --space-20: 20px;
-      --space-24: 24px;
-      --space-32: 32px;
-
-      --radius-sm: 6px;
-      --radius-base: 8px;
-      --radius-lg: 12px;
-      --radius-full: 9999px;
-
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-      --duration-fast: 150ms;
-      --duration-normal: 250ms;
-      --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
-      --color-focus-ring: rgba(33, 128, 141, 0.4);
-    }
-
-    html {
-      font-size: var(--font-size-base);
-      font-family: var(--font-family-base);
-      line-height: 1.5;
-      color: var(--color-text);
-      background-color: var(--color-background);
-      -webkit-font-smoothing: antialiased;
-      box-sizing: border-box;
-    }
-
-    *, *::before, *::after {
-      box-sizing: inherit;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      background: radial-gradient(circle at top left, rgba(33,128,141,0.12), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(192,21,47,0.10), transparent 55%),
-                  var(--color-background);
-      padding: var(--space-16);
-    }
-
-    h1, h2 {
-      margin: 0;
-      font-weight: var(--font-weight-semibold);
-      line-height: var(--line-height-tight);
-      letter-spacing: -0.01em;
-    }
-
-    h1 {
-      font-size: var(--font-size-4xl);
-    }
-
-    h2 {
-      font-size: var(--font-size-3xl);
-    }
-
-    p {
-      margin: 0 0 var(--space-16) 0;
-      color: var(--color-text-secondary);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-8) var(--space-16);
-      border-radius: var(--radius-base);
-      font-size: var(--font-size-lg);
-      font-weight: var(--font-weight-medium);
-      cursor: pointer;
-      border: none;
-      transition: all var(--duration-normal) var(--ease-standard);
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px var(--color-focus-ring);
-    }
-
-    .btn--primary {
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-active));
-      color: var(--color-btn-primary-text);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn--primary:hover {
-      filter: brightness(1.03);
-      transform: translateY(-1px);
-    }
-
-    .btn--primary:active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn--ghost {
-      background: transparent;
-      color: var(--color-primary);
-    }
-
-    .btn--ghost:hover {
-      background: rgba(33, 128, 141, 0.06);
-    }
-
-    .form-label {
-      display: block;
-      margin-bottom: var(--space-4);
-      font-size: 12px;
-      font-weight: var(--font-weight-medium);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--color-text-secondary);
-    }
-
-    .form-control {
-      width: 100%;
-      padding: var(--space-8) var(--space-12);
-      border-radius: var(--radius-base);
-      border: 1px solid var(--color-border);
-      background-color: var(--color-surface);
-      font-size: var(--font-size-lg);
-      color: var(--color-text);
-      transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
-      resize: vertical;
-      min-height: 44px;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 2px rgba(33,128,141,0.25);
-    }
-
-    .form-group {
-      margin-bottom: var(--space-16);
-    }
-
-    .error-text {
-      margin-top: var(--space-4);
-      font-size: 11px;
-      color: var(--color-error);
-      min-height: 14px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 960px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: var(--space-24);
-      align-items: stretch;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: var(--space-12);
-      }
-      .container {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background-color: rgba(255,255,255,0.9);
-      border-radius: 22px;
-      border: 1px solid rgba(var(--color-brown-600-rgb), 0.18);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.06);
-      overflow: hidden;
-      backdrop-filter: blur(16px);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card__body {
-      padding: var(--space-24);
-    }
-
-    @media (max-width: 480px) {
-      .card__body {
-        padding: var(--space-16);
-      }
-    }
-
-    .hero-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-16);
-      margin-bottom: var(--space-20);
-    }
-
-    .hero-title-group {
-      flex: 1;
-    }
-
-    .hero-subtitle {
-      font-size: var(--font-size-lg);
-      margin-top: var(--space-8);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-8);
-      padding: 4px 10px 4px 4px;
-      border-radius: var(--radius-full);
-      border: 1px dashed rgba(33,128,141,0.4);
-      background: rgba(33,128,141,0.06);
-      font-size: 11px;
-      color: var(--color-text-secondary);
-      margin-bottom: var(--space-12);
-    }
-
-    .hero-badge-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #fff 0, #fff 30%, rgba(255,255,255,0) 50%), radial-gradient(circle at 90% 80%, rgba(255,255,255,0.9) 0, rgba(255,255,255,0) 55%), linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #f6d365 50%, #fbc2eb 75%, #a1c4fd 100%);
-      position: relative;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.5), 0 0 16px rgba(251, 191, 36, 0.43);
-    }
-
-    .hero-badge-dot::after {
-      content: "✨";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-    }
-
-    .hero-emoji {
-      font-size: 46px;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-8);
-      margin-top: var(--space-8);
-      margin-bottom: var(--space-16);
-    }
-
-    .pill {
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      background: rgba(33,128,141,0.06);
-      color: var(--color-text-secondary);
-    }
-
-    .generator-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-12);
-      margin-top: var(--space-24);
-      flex-wrap: wrap;
-    }
-
-    .tiny-muted {
-      font-size: 11px;
-      color: var(--color-gray-300);
-    }
-
-    .preview-card {
-      position: relative;
-      isolation: isolate;
-      padding-top: var(--space-24);
-    }
-
-    .confetti-bg {
-      position: absolute;
-      inset: -20px;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(252, 211, 77, 0.7) 0, transparent 55%),
-        radial-gradient(circle at 80% 10%, rgba(244, 114, 182, 0.7) 0, transparent 55%),
-        radial-gradient(circle at 20% 90%, rgba(45, 212, 191, 0.7) 0, transparent 55%),
-        radial-gradient(circle at 90% 80%, rgba(96, 165, 250, 0.7) 0, transparent 55%);
-      opacity: 0.75;
-      filter: blur(1px);
-      z-index: -2;
-    }
-
-    .preview-inner {
-      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.92));
-      border-radius: 18px;
-      padding: var(--space-20);
-      border: 1px solid rgba(148,163,184,0.45);
-      box-shadow: 0 18px 45px rgba(15,23,42,0.74);
-      color: #e5e7eb;
-      overflow: hidden;
-    }
-
-    .preview-floating-tag {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 10px;
-      background: rgba(15,23,42,0.88);
-      border: 1px solid rgba(148,163,184,0.55);
-      color: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      backdrop-filter: blur(8px);
-    }
-
-    .preview-floating-tag span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
-    }
-
-    .preview-to-line {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(148,163,184,0.9);
-      margin-bottom: var(--space-8);
-    }
-
-    .preview-to-line span {
-      color: #e5e7eb;
-    }
-
-    .preview-title-line {
-      font-size: var(--font-size-3xl);
-      font-weight: 600;
-      margin-bottom: var(--space-12);
-    }
-
-    .preview-title-line span.name {
-      background: linear-gradient(120deg, #facc15, #f97316, #ec4899, #6366f1);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .preview-message {
-      font-size: var(--font-size-lg);
-      line-height: 1.6;
-      color: rgba(209,213,219,0.95);
-      margin-bottom: var(--space-16);
-      white-space: pre-line;
-    }
-
-    .preview-from {
-      font-size: 13px;
-      color: rgba(148,163,184,0.9);
-    }
-
-    .preview-from span {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .preview-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-8);
-      margin-top: var(--space-16);
-      flex-wrap: wrap;
-    }
-
-    .preview-tagline {
-      font-size: 11px;
-      color: rgba(156,163,175,0.95);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .preview-tagline-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 999px;
-      background: #f97316;
-    }
-
-    .preview-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .preview-chip {
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(55,65,81,0.9);
-      color: rgba(209,213,219,0.95);
-      font-size: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .preview-chip-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .preview-hint {
-      margin-top: var(--space-16);
-      font-size: 11px;
-      color: rgba(148,163,184,0.9);
-    }
-
-    .preview-hint code {
-      font-family: var(--font-family-mono);
-      background: rgba(15,23,42,0.96);
-      border-radius: 999px;
-      padding: 2px 8px;
-      border: 1px solid rgba(55,65,81,0.8);
-      color: #e5e7eb;
-    }
-
-    .generator-layout {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-16);
-    }
-
-    .name-row {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-      gap: var(--space-12);
-    }
-
-    @media (max-width: 480px) {
-      .name-row {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
-
-    .hidden {
-      display: none !important;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Disha</title>
+    <!-- Importing Fonts: 'Chewy' for fun headers, 'Outfit' for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root {
+            /* New Vibrant Palette: Sunset & Teal */
+            --primary-pink: #ff4757;
+            --primary-orange: #ffa502;
+            --primary-teal: #2ed573;
+            --soft-cream: #f1f2f6;
+            --text-dark: #2f3542;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            /* Fresh, joyous gradient */
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        /* Music Button */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+        }
+        .music-toggle:hover { transform: scale(1.05); }
+
+        /* --- Page Management --- */
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            padding: 20px;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.8) translateY(50px);
+            z-index: -1;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            z-index: 10;
+        }
+
+        /* --- Buttons --- */
+        .btn-flower {
+            background: var(--primary-orange);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Chewy', cursive;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 6px 0px #e67e22;
+            transition: all 0.1s;
+            margin-top: 2rem;
+            z-index: 20;
+            letter-spacing: 1px;
+        }
+
+        .btn-flower:active {
+            transform: translateY(6px);
+            box-shadow: 0 0 0 #e67e22;
+        }
+
+        /* --- Page 1 --- */
+        .intro-text {
+            font-family: 'Chewy', cursive;
+            font-size: 5rem;
+            color: white;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Frangipani Art */
+        .frangipani-wrapper {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            animation: spin 25s linear infinite;
+        }
+        
+        .petal {
+            position: absolute;
+            width: 90px;
+            height: 140px;
+            background: radial-gradient(circle at 50% 80%, #ffd700 15%, #fff 60%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .p1 { transform: translate(-50%, -100%) rotate(0deg); }
+        .p2 { transform: translate(-50%, -100%) rotate(72deg); }
+        .p3 { transform: translate(-50%, -100%) rotate(144deg); }
+        .p4 { transform: translate(-50%, -100%) rotate(216deg); }
+        .p5 { transform: translate(-50%, -100%) rotate(288deg); }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- Page 2 --- */
+        .wish-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            z-index: 5;
+            border: 2px solid white;
+        }
+        
+        .header-font {
+            font-family: 'Chewy', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .msg-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .gift-text {
+            font-family: 'Chewy', cursive;
+            font-size: 2rem;
+            color: var(--primary-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .gift-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            max-height: 250px;
+            object-fit: cover;
+        }
+
+        /* --- Page 3 --- */
+        #page-3 { background: #2f3542; color: white; }
+
+        .final-cheers {
+            font-family: 'Chewy', cursive;
+            font-size: 4.5rem;
+            color: var(--primary-orange);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce { to { transform: translateY(-15px); } }
+
+        /* Signature Styling - Updated */
+        .signature-box {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            text-align: left;
+        }
+        
+        .from-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 300;
+            display: block;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .nahid-name {
+            font-family: 'Chewy', cursive;
+            font-size: 2.2rem; /* Smaller size */
+            color: #ff3b30;    /* Red color */
+            display: block;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+    </style>
 </head>
 <body>
-  <main class="container" aria-label="Birthday wish generator">
-    <!-- Left: generator -->
-    <section class="card" aria-label="Create your birthday wish">
-      <div class="card__body">
-        <div class="hero-badge" aria-hidden="true">
-          <div class="hero-badge-dot"></div>
-          Made with a lot of love &amp; a bit of code
-        </div>
 
-        <div class="hero-header">
-          <div class="hero-title-group">
-            <h1>Create A Birthday Page</h1>
-            <p class="hero-subtitle">
-              Personalize a one-page birthday website for your special person. Just fill the details and copy the text into any HTML file.
+    <!-- Audio Player -->
+    <audio id="bg-music" loop>
+        <source src="https://raw.githubusercontent.com/huzidaha/huzidaha.github.io/master/music/Happy%20Birthday.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="music-toggle" onclick="toggleMusic()">
+        <span id="music-icon">🔇</span> <span id="music-text">Play Music</span>
+    </div>
+
+    <!-- PAGE 1 -->
+    <div id="page-1" class="page visible">
+        <div class="frangipani-wrapper" style="margin-bottom: 30px;">
+            <div class="petal p1"></div><div class="petal p2"></div>
+            <div class="petal p3"></div><div class="petal p4"></div>
+            <div class="petal p5"></div>
+        </div>
+        <h1 class="intro-text">For Disha</h1>
+        <button class="btn-flower" onclick="goToPage(2)">Tap to Open ✨</button>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div id="page-2" class="page hidden">
+        <div class="wish-card">
+            <h1 class="header-font">Happy Birthday! 🌸</h1>
+            <p class="msg-text">
+                Wishing you a day as sweet and beautiful as a blooming Kathgolap. 
+                <br>May your year be full of main character energy!
             </p>
-          </div>
-          <div class="hero-emoji" aria-hidden="true">🎂</div>
+            
+            <div class="gift-text">this is for you</div>
+            <img src="image_4cfc74.jpg" alt="A gift for you" class="gift-image">
+
+            <div style="font-size: 2.5rem; margin: 10px;">🎈🎁🎂</div>
+            <button class="btn-flower" onclick="goToPage(3)">Let's Party ➡️</button>
         </div>
+    </div>
 
-        <div class="pill-row" aria-hidden="true">
-          <span class="pill">For best friends</span>
-          <span class="pill">For partners</span>
-          <span class="pill">For family</span>
-          <span class="pill">For your favourite human</span>
+    <!-- PAGE 3 -->
+    <div id="page-3" class="page hidden">
+        <h1 class="header-font" style="color:white; font-size: 3rem;">Cheers! 🥂</h1>
+        <h1 class="final-cheers">The Day is<br>yours<br>ENJOYYYYYYYY!!!</h1>
+        
+        <!-- SIGNATURE AREA -->
+        <div class="signature-box">
+            <span class="from-text">From</span>
+            <span class="nahid-name">Nahid</span>
         </div>
+    </div>
 
-        <div class="generator-layout">
-          <div class="name-row">
-            <div class="form-group">
-              <label for="toName" class="form-label">Their Name</label>
-              <input
-                id="toName"
-                class="form-control"
-                type="text"
-                placeholder="e.g., Ananya"
-                autocomplete="off"
-              />
-              <div id="toNameError" class="error-text"></div>
-            </div>
-            <div class="form-group">
-              <label for="fromName" class="form-label">Your Name</label>
-              <input
-                id="fromName"
-                class="form-control"
-                type="text"
-                placeholder="e.g., Rahul"
-                autocomplete="off"
-              />
-              <div id="fromNameError" class="error-text"></div>
-            </div>
-          </div>
+    <script>
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        const musicText = document.getElementById('music-text');
+        let isPlaying = false;
 
-          <div class="form-group">
-            <label for="tone" class="form-label">Vibe</label>
-            <select id="tone" class="form-control">
-              <option value="sweet">Soft &amp; sweet</option>
-              <option value="funny">Fun &amp; slightly crazy</option>
-              <option value="romantic">Romantic</option>
-              <option value="grateful">Grateful &amp; emotional</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="memory" class="form-label">One Special Memory (optional)</label>
-            <textarea
-              id="memory"
-              class="form-control"
-              rows="3"
-              placeholder="Write one moment that still makes you smile whenever you think about it…"
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="wish" class="form-label">Your Heartfelt Message</label>
-            <textarea
-              id="wish"
-              class="form-control"
-              rows="4"
-              placeholder="Write in your own words, or leave empty and I will help you start."
-            ></textarea>
-            <div id="wishError" class="error-text"></div>
-          </div>
-
-          <div class="generator-footer">
-            <button type="button" class="btn btn--primary" id="generateBtn">
-              Generate Birthday Page
-            </button>
-            <button type="button" class="btn btn--ghost" id="fillForMeBtn">
-              Suggest a cute message
-            </button>
-            <span class="tiny-muted">
-              Tip: After generating, right click → “View page source” and paste into your own file, or simply screenshot.
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Right: live preview of the birthday website -->
-    <section class="card preview-card" aria-label="Birthday website preview">
-      <div class="confetti-bg" aria-hidden="true"></div>
-      <div class="card__body">
-        <div class="preview-inner">
-          <div class="preview-floating-tag">
-            <span class="dot"></span>
-            <span id="floatingTagText">Birthday mode • Online</span>
-          </div>
-
-          <div class="preview-to-line">
-            to <span id="previewToName">you, my favourite person</span>
-          </div>
-
-          <div class="preview-title-line">
-            Happy Birthday, <span id="previewBigName" class="name">Beautiful Soul</span> 🎉
-          </div>
-
-          <div id="previewMessage" class="preview-message">
-            On this planet full of people, somehow I got lucky enough to end up in the same timeline as you.
-            <br><br>
-            Today is about your smile, your chaos, your softness, and every little piece of you that makes the world feel less heavy and a lot more beautiful.
-          </div>
-
-          <div id="previewMemoryBlock" class="preview-message hidden"></div>
-
-          <div class="preview-from">
-            forever cheering for you,<br />
-            <span id="previewFromName">someone who is very, very grateful for you</span>
-          </div>
-
-          <div class="preview-bottom">
-            <div class="preview-tagline">
-              <span class="preview-tagline-dot"></span>
-              Best viewed with full volume &amp; full heart
-            </div>
-            <div class="preview-chip-row">
-              <span class="preview-chip">
-                <span class="preview-chip-dot"></span>
-                birthday • special person
-              </span>
-              <span class="preview-chip">
-                made with ♥ in HTML
-              </span>
-            </div>
-          </div>
-
-          <div class="preview-hint">
-            To turn this into a standalone website:
-            <br />
-            1. Copy the message &amp; names above.<br />
-            2. Put them into a simple <code>index.html</code> file.<br />
-            3. Open it in any browser or send as a link / screenshot.
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    (function () {
-      const toNameInput = document.getElementById("toName");
-      const fromNameInput = document.getElementById("fromName");
-      const toneSelect = document.getElementById("tone");
-      const memoryInput = document.getElementById("memory");
-      const wishInput = document.getElementById("wish");
-
-      const toNameError = document.getElementById("toNameError");
-      const fromNameError = document.getElementById("fromNameError");
-      const wishError = document.getElementById("wishError");
-
-      const previewToName = document.getElementById("previewToName");
-      const previewBigName = document.getElementById("previewBigName");
-      const previewMessage = document.getElementById("previewMessage");
-      const previewFromName = document.getElementById("previewFromName");
-      const previewMemoryBlock = document.getElementById("previewMemoryBlock");
-
-      const generateBtn = document.getElementById("generateBtn");
-      const fillForMeBtn = document.getElementById("fillForMeBtn");
-
-      function clean(text) {
-        return (text || "").trim();
-      }
-
-      function sentenceCase(str) {
-        const s = clean(str);
-        if (!s) return "";
-        return s.charAt(0).toUpperCase() + s.slice(1);
-      }
-
-      function getSuggestedMessage(tone, toName, fromName, memory) {
-        const name = toName || "you";
-        const me = fromName || "me";
-        const mem = clean(memory);
-
-        if (tone === "funny") {
-          return (
-            "Happy birthday, " +
-            name +
-            "! 🎉\n\n" +
-            "Thank you for being the beautiful chaos in my otherwise boring, nicely-arranged life. " +
-            "You are the only person who can make me laugh even when I’m actively trying to stay annoyed.\n\n" +
-            (mem
-              ? "Also, I will never forget " +
-                mem +
-                " – that memory lives rent‑free in my brain forever.\n\n"
-              : "") +
-            "I hope today gives you the type of happiness you accidentally give everyone else just by existing.\n\n" +
-            "Love,\n" +
-            me
-          );
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.textContent = "🔇";
+                musicText.textContent = "Play Music";
+            } else {
+                audio.volume = 0.5; 
+                audio.play().then(() => {
+                    musicIcon.textContent = "🎵";
+                    musicText.textContent = "Playing...";
+                }).catch(e => {
+                    alert("Please interact with the page first to play music!");
+                });
+            }
+            isPlaying = !isPlaying;
         }
 
-        if (tone === "romantic") {
-          return (
-            "Happy birthday, " +
-            name +
-            " ❤️\n\n" +
-            "Sometimes I still can’t believe I get to exist in the same small pocket of time as you. " +
-            "You turn ordinary days into soft, warm memories just by being yourself.\n\n" +
-            (mem
-              ? "I keep replaying " +
-                mem +
-                " in my head – it’s one of those moments that quietly convinced me that my heart had already chosen you.\n\n"
-              : "") +
-            "On your birthday, I just want you to remember this: no matter how the world feels, " +
-            "you will always have one person who is endlessly, stubbornly, hopelessly on your side.\n\n" +
-            "Always yours,\n" +
-            me
-          );
+        function goToPage(pageNum) {
+            document.querySelectorAll('.page').forEach(el => {
+                el.classList.remove('visible');
+                el.classList.add('hidden');
+            });
+
+            document.getElementById(`page-${pageNum}`).classList.remove('hidden');
+            document.getElementById(`page-${pageNum}`).classList.add('visible');
+
+            if (pageNum === 2 && !isPlaying) {
+                toggleMusic();
+                fireConfetti();
+            }
+
+            if (pageNum === 3) {
+                fireworks();
+            }
         }
 
-        if (tone === "grateful") {
-          return (
-            "Happy birthday, " +
-            name +
-            ". 💫\n\n" +
-            "Thank you for being one of the rarest, kindest, most genuine humans I’ve ever known. " +
-            "You make heavy days feel lighter and good days feel unforgettable.\n\n" +
-            (mem
-              ? "I still think about " +
-                mem +
-                " and smile – it’s a small proof of how safe and happy I feel around you.\n\n"
-              : "") +
-            "I’m so grateful that my life and yours intersected in this timeline. " +
-            "You deserve soft mornings, calm nights, and people who love you the way you love them.\n\n" +
-            "With a lot of gratitude,\n" +
-            me
-          );
+        function fireConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff4757', '#ffa502', '#2ed573']
+            });
         }
 
-        // sweet
-        return (
-          "Happy birthday, " +
-          name +
-          "! 🎂🌟\n\n" +
-          "Another year of your existence and I’m still not over how lucky the world is to have you. " +
-          "You have this quiet superpower of making people feel seen, safe and a little less alone.\n\n" +
-          (mem
-            ? "Whenever I think about " +
-              mem +
-              ", I’m reminded that moments with you are never just moments – they are core memories.\n\n"
-            : "") +
-          "I hope today wraps you in the same warmth you keep giving to everyone around you, without even trying.\n\n" +
-          "With lots of love,\n" +
-          me
-        );
-      }
+        function fireworks() {
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            var random = (min, max) => Math.random() * (max - min) + min;
 
-      function updatePreviewFromInputs() {
-        const toName = clean(toNameInput.value) || "you, my favourite person";
-        const fromName = clean(fromNameInput.value) || "someone who is very, very grateful for you";
-
-        previewToName.textContent = toName;
-        previewBigName.textContent = clean(toNameInput.value) || "Beautiful Soul";
-
-        let msg = clean(wishInput.value);
-        const mem = clean(memoryInput.value);
-        const tone = toneSelect.value;
-
-        if (!msg) {
-          msg = getSuggestedMessage(tone, clean(toNameInput.value), clean(fromNameInput.value), mem);
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return clearInterval(interval);
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
         }
-
-        previewMessage.textContent = msg;
-
-        if (mem) {
-          previewMemoryBlock.classList.remove("hidden");
-          previewMemoryBlock.textContent =
-            "P.S. One moment I keep close to my heart: " + mem;
-        } else {
-          previewMemoryBlock.classList.add("hidden");
-          previewMemoryBlock.textContent = "";
-        }
-
-        previewFromName.textContent = fromName;
-      }
-
-      function validate() {
-        let ok = true;
-        toNameError.textContent = "";
-        fromNameError.textContent = "";
-        wishError.textContent = "";
-
-        if (!clean(toNameInput.value)) {
-          toNameError.textContent = "Write their name – it makes the page feel personal.";
-          ok = false;
-        }
-        if (!clean(fromNameInput.value)) {
-          fromNameError.textContent = "Write your name so they know who is behind this magic.";
-          ok = false;
-        }
-        if (!clean(wishInput.value) && !clean(memoryInput.value)) {
-          wishError.textContent = "Write a message or at least one memory, or use “Suggest a cute message”.";
-          ok = false;
-        }
-        return ok;
-      }
-
-      generateBtn.addEventListener("click", function () {
-        if (!validate()) return;
-        updatePreviewFromInputs();
-        generateBtn.textContent = "Updated ✓";
-        setTimeout(() => {
-          generateBtn.textContent = "Generate Birthday Page";
-        }, 1600);
-      });
-
-      fillForMeBtn.addEventListener("click", function () {
-        const tone = toneSelect.value;
-        const toName = clean(toNameInput.value);
-        const fromName = clean(fromNameInput.value);
-        const memory = clean(memoryInput.value);
-
-        const suggestion = getSuggestedMessage(tone, toName, fromName, memory);
-        wishInput.value = suggestion;
-        wishError.textContent = "";
-        updatePreviewFromInputs();
-      });
-
-      [toNameInput, fromNameInput, toneSelect, memoryInput, wishInput].forEach((el) => {
-        el.addEventListener("input", () => {
-          updatePreviewFromInputs();
-        });
-      });
-
-      // Initial render
-      updatePreviewFromInputs();
-    })();
-  </script>
+    </script>
 </body>
 </html>
