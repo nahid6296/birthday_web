@@ -191,6 +191,19 @@
             object-fit: cover;
         }
 
+        .gift-link {
+            display: inline-block;
+            margin-top: 0.3rem;
+            font-size: 1rem;
+            text-decoration: none;
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+
+        .gift-link:hover {
+            text-decoration: underline;
+        }
+
         /* --- Page 3 --- */
         #page-3 { background: #2f3542; color: white; }
 
@@ -236,9 +249,9 @@
 </head>
 <body>
 
-    <!-- Audio Player -->
     <audio id="bg-music" loop>
-        <source src="https://raw.githubusercontent.com/huzidaha/huzidaha.github.io/master/music/Happy%20Birthday.mp3" type="audio/mp3">
+        <source src="happy-birthday-357371.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 
     <div class="music-toggle" onclick="toggleMusic()">
@@ -265,11 +278,23 @@
                 <br>May your year be full of main character energy!
             </p>
             
-            <div class="gift-text">this is for you</div>
-            <!-- Replaced broken local link with a public URL for preview. 
-                 If you have your own image, name it 'kathgolap.jpg' and put it in the same folder, 
-                 then change the src below to "kathgolap.jpg" -->
-            <img src="https://drive.google.com/file/d/1qAGnBoWtjlzaiT6cWr-J3Jnuf3HAVo4h/view?usp=sharing" alt="A gift for you" class="gift-image">
+            <div class="gift-text">This is for you 💝</div>
+
+            <!-- DIRECT IMAGE VIEW FROM DRIVE -->
+            <img 
+                src="https://drive.google.com/uc?export=view&id=1qAGnBoWtjlzaiT6cWr-J3Jnuf3HAVo4h" 
+                alt="A gift for you" 
+                class="gift-image"
+            >
+
+            <!-- CLICKABLE GDRIVE LINK TO OPEN FULL IMAGE -->
+            <a 
+                href="https://drive.google.com/file/d/1qAGnBoWtjlzaiT6cWr-J3Jnuf3HAVo4h/view?usp=sharing" 
+                target="_blank" 
+                class="gift-link"
+            >
+                ✨ Open your full gift here
+            </a>
 
             <div style="font-size: 2.5rem; margin: 10px;">🎈🎁🎂</div>
             <button class="btn-flower" onclick="goToPage(3)">Let's Party ➡️</button>
@@ -294,21 +319,28 @@
         const musicText = document.getElementById('music-text');
         let isPlaying = false;
 
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                musicIcon.textContent = "🔇";
-                musicText.textContent = "Play Music";
-            } else {
-                audio.volume = 0.5; 
-                audio.play().then(() => {
+        async function toggleMusic() {
+            if (!audio) return;
+
+            if (!isPlaying) {
+                try {
+                    audio.volume = 0.5;
+                    await audio.play();
+                    isPlaying = true;
                     musicIcon.textContent = "🎵";
                     musicText.textContent = "Playing...";
-                }).catch(e => {
-                    alert("Please interact with the page first to play music!");
-                });
+                } catch (error) {
+                    console.log("Audio playback failed:", error);
+                    musicIcon.textContent = "🔇";
+                    musicText.textContent = "Tap to Play";
+                    isPlaying = false;
+                }
+            } else {
+                audio.pause();
+                isPlaying = false;
+                musicIcon.textContent = "🔇";
+                musicText.textContent = "Play Music";
             }
-            isPlaying = !isPlaying;
         }
 
         function goToPage(pageNum) {
@@ -317,11 +349,15 @@
                 el.classList.add('hidden');
             });
 
-            document.getElementById(`page-${pageNum}`).classList.remove('hidden');
-            document.getElementById(`page-${pageNum}`).classList.add('visible');
+            const page = document.getElementById(`page-${pageNum}`);
+            page.classList.remove('hidden');
+            page.classList.add('visible');
 
-            if (pageNum === 2 && !isPlaying) {
-                toggleMusic();
+            if (pageNum === 2) {
+                // Light auto-try for music (runs inside button click so it's allowed)
+                if (!isPlaying) {
+                    toggleMusic();
+                }
                 fireConfetti();
             }
 
@@ -349,11 +385,16 @@
                 var timeLeft = animationEnd - Date.now();
                 if (timeLeft <= 0) return clearInterval(interval);
                 var particleCount = 50 * (timeLeft / duration);
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } 
+                }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } 
+                }));
             }, 250);
         }
     </script>
 </body>
 </html>
-
